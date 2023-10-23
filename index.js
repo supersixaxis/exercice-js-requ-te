@@ -1,5 +1,6 @@
 const dogContainer = document.getElementById('dog-container');
-const randomDog = document.getElementById('random-dog');
+const dogContent = document.getElementById('dog-content');
+const randomDog = document.getElementById('button-dog');
 const url = ('https://dog.ceo/api/breeds/image/random')
 
 
@@ -49,12 +50,12 @@ fetch(url)
         img.src = data.message;
         const existingImages = document.querySelectorAll('.dog-image');
         existingImages.forEach(existingImage => {
-            dogContainer.removeChild(existingImage);
+            dogContent.removeChild(existingImage);
         });
         img.classList.add('dog-image');
         img.style.width= '500px'
         img.style.height= '500px'
-        dogContainer.appendChild(img);
+        dogContent.appendChild(img);
 
     })
     .catch(error => console.log("Erreur : " + error));
@@ -68,9 +69,6 @@ function handleButtonClick() {
     selectRaceDog();
 }
 
-dogContainer.style.backgroundColor = 'blue';
-dogContainer.style.width = '500px'
-dogContainer.style.height = '500px'
 
 randomDog.addEventListener('click', handleButtonClick);
 
